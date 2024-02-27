@@ -5,11 +5,13 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Policy from "./components/Policy";
 import Contact from "./components/ContactPage";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <BrowserRouter>
-      <TopBar />
+      <TopBar/>
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
