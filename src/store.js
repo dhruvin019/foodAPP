@@ -1,14 +1,25 @@
-import { configureStore,thunk } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { getAllPizzaReducer } from "./reducers/pizzaReducer";
+import { registerUserReducer } from "./reducers/userReducer";
+import { cartReducer } from "./reducers/cartReducer";
 
+const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 const rootReducer = {
-  pizzas: getAllPizzaReducer
+  getAllPizzaReducer: getAllPizzaReducer,
+  cartReducer: cartReducer,
+  registerUserReducer: registerUserReducer,
 };
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  // Optionally, you can add middleware here
 });
 
-export default store;
+const initialState = {
+  cartReducer: {
+    cartItems: cartItems,
+  },
+};
 
+export default store;

@@ -6,6 +6,9 @@ import Home from "./components/Home";
 import Policy from "./components/Policy";
 import Contact from "./components/ContactPage";
 import NavBar from "./components/NavBar";
+import CartScreen from "./components/CartScreen";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -14,9 +17,12 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<CartScreen />} />
       </Routes>
     </BrowserRouter>
   );
