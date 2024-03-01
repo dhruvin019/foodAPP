@@ -2,8 +2,11 @@ import axios from "axios";
 export const registerUser = (user) => async (dispatch) => {
     dispatch({ type: "USER_REGISTER_REQUEST" });
     try {
-      await axios.post("/api/users/register", user);
+      const response = await axios.post("/api/users/register", user);
       dispatch({ type: "USER_REGISTER_SUCCESS" });
+      localStorage.setItem("currentUser", JSON.stringify(response.data));
+      
+      window.location.href = "/";
     } catch (error) {
       dispatch({ type: "USER_REGISTER_FAIL", payload: error });
     }

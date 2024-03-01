@@ -10,7 +10,7 @@ const cartItems = localStorage.getItem("cartItems")
 const currentUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
-
+  // console.log(currentUser);
 const rootReducer = {
   getAllPizzaReducer: getAllPizzaReducer,
   cartReducer: cartReducer,

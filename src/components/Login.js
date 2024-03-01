@@ -8,11 +8,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (localStorage.getItem("currentUser")) {
-      window.location.href = "/";
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("currentUser")) {
+  //     window.location.href = "/";
+  //   }
+  // }, []);
   const loginHandler = () => {
     const user = { email, password };
     dispatch(loginUser(user));
