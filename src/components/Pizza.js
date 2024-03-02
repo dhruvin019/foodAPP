@@ -135,7 +135,7 @@ const Pizza = ({ pizza }) => {
             </Row>
           </Card.Text>
           <Row>
-            {/* <Col md={6}>Price : {pizza.prices[0][varient] * quantity} /-RS</Col> */}
+            <Col md={6}>Price : {pizza.price[0][varient] * quantity} /-RS</Col>
             <Col md={6}>
               <Button
                 onClick={addToCartHandler}

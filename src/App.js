@@ -11,6 +11,8 @@ import NavBar from "./components/NavBar";
 import CartScreen from "./components/CartScreen";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Admin from "./components/Admin";
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<CartScreen />} />
+        <Route path="/admin/*" element={<Admin/>} />
+        
       </Routes>
     </BrowserRouter>
   );

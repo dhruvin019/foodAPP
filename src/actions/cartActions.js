@@ -5,8 +5,8 @@ export const addToCart = (pizza, quantity, varient) => (dispatch, getState) => {
     image: pizza.image,
     varient: varient,
     quantity: Number(quantity),
-    // prices: pizza.prices,
-    // price: pizza.prices[0][varient] * quantity,
+    prices: pizza.price,
+    price: pizza.price[0][varient] * quantity,
   };
   if (cartItem.quantity > 10) {
     alert("you Can only add 10 pizzas");

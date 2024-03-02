@@ -22,11 +22,11 @@ const CartScreen = () => {
                     <h5>
                       {item.name} [{item.varient}]
                     </h5>
-                    {/* <h6>
+                    <h6>
                       {" "}
                       Price : {item.quantity} X {item.prices[0][item.varient]} ={" "}
                       {item.price}
-                    </h6> */}
+                    </h6>
 
                     <h6>
                       Quantity :&nbsp;
