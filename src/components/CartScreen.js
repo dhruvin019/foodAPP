@@ -35,7 +35,7 @@ const CartScreen = () => {
                         style={{ cursor: "pointer" }}
                         onClick={() => {
                           dispatch(
-                            addToCart(item, item.quantity - 1, item.varient)
+                            addToCart(item, item.quantity + 1, item.varient)
                           );
                         }}
                       />{" "}
@@ -46,7 +46,7 @@ const CartScreen = () => {
                         style={{ cursor: "pointer" }}
                         onClick={() => {
                           dispatch(
-                            addToCart(item, item.quantity + 1, item.varient)
+                            addToCart(item, item.quantity - 1, item.varient)
                           );
                         }}
                       />

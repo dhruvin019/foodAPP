@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Row, Col, Container, ButtonGroup, Button } from 'react-bootstrap';
 import { Outlet } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
 const Admin = () => {
+  const userState = useSelector((state) => state.loginUserReducer);
+  const { currentUser } = userState;
+  useEffect(() => {
+    if (localStorage.getItem("currentUser") === null || !currentUser.isAdmin) {
+      window.location.href = "/";
+    }
+  }, [currentUser]);
   return (
     <Container>
       <Row>
         <h1 className="text-center bg-dark text-light p-2">Admin Panel</h1>
         <Col md={2}>
           <ButtonGroup vertical style={{ minHeight: '400px' }}>
-            <LinkContainer to="/admin/alluser">
+            <LinkContainer to="/admin">
               <Button>All Users</Button>
             </LinkContainer>
             <LinkContainer to="/admin/allpizza">

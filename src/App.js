@@ -32,11 +32,11 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<CartScreen />} />
-        <Route path="/admin/" element={<Admin/>}>
-            <Route path="alluser" element={<AllUser />} />
-            <Route path="allpizza" element={<AllPizza />} />
-            <Route path="addpizza" element={<AddPizza />} />
-            <Route path="allorders" element={<AllOrders />} />
+        <Route path="/admin" element={<Admin/>}>
+            <Route path="/admin" element={<AllUser />} />
+            <Route path="/admin/allpizza" element={<AllPizza />} />
+            <Route path="/admin/addpizza" element={<AddPizza />} />
+            <Route path="/admin/allorders" element={<AllOrders />} />
         </Route>
         
       </Routes>
