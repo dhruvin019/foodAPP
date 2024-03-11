@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { getAllPizzaReducer } from "./reducers/pizzaReducer";
-import { registerUserReducer, loginUserReducer } from "./reducers/userReducer";
+import { registerUserReducer, loginUserReducer, getAllUsersReducer } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { getUserOrdersReducer, placeOrderReducer } from "./reducers/orderReducer";
 
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -15,22 +16,24 @@ const rootReducer = {
   getAllPizzaReducer: getAllPizzaReducer,
   cartReducer: cartReducer,
   registerUserReducer: registerUserReducer,
-  loginUserReducer: loginUserReducer
+  loginUserReducer: loginUserReducer,
+  placeOrderReducer: placeOrderReducer,
+  getUserOrdersReducer: getUserOrdersReducer,
+  getAllUsersReducer: getAllUsersReducer
 };
 
 const initialState = {
   cartReducer: {
-    cartItems: cartItems || [], // handle null or undefined
+    cartItems: cartItems || [], 
   },
   loginUserReducer: {
-    currentUser: currentUser || null, // handle null or undefined
+    currentUser: currentUser || null, 
   }
 };
 
 const store = configureStore({
   reducer: rootReducer,
   initialState,
-  // Optionally, you can add middleware here
 });
 
 export default store;

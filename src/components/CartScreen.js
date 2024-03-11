@@ -3,11 +3,17 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
 import { addToCart, deleteFromCart } from "../actions/cartActions";
+import Checkout from "./Checkout";
 
 
 const CartScreen = () => {
     const cartState = useSelector((state) => state.cartReducer);
     const cartItems = cartState.cartItems;
+
+    // const cartItems = localStorage.getItem("cartItems")
+    // ? JSON.parse(localStorage.getItem("cartItems"))
+    // : null;
+
     const dispatch = useDispatch();
     const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
     return (
@@ -76,7 +82,7 @@ const CartScreen = () => {
             <h4>Sub Total </h4>
             <h4>RS : {subTotal} /-</h4>
             
-            <Button>Checkout</Button>
+            <Checkout subTotal={subTotal}/>
           </Col>
         </Row>
       </Container>

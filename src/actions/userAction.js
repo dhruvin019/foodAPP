@@ -31,3 +31,24 @@ export const registerUser = (user) => async (dispatch) => {
     localStorage.removeItem("currentUser");
     window.location.href = "/login";
   };
+
+  export const getAllUsers = () => async (dispatch) => {
+    dispatch({ type: "GET_USERS_REQUEST" });
+    try {
+      const response = await axios.get("/api/users/getallusers");
+      // console.log(response.data);
+      dispatch({ type: "GET_USERS_SUCCESS", payload: response.data });
+    } catch (err) {
+      dispatch({ type: "GET_USERS_FAIL", payload: err.message });
+    }
+  };
+ 
+  
+  export const deleteUser = (userid) => async (dispatch) => {
+    try {
+      await axios.post("/api/users/deleteuser", { userid }); 
+      dispatch(getAllUsers());
+    } catch (error) {
+      console.log(error.message);
+    }
+  };

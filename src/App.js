@@ -16,6 +16,8 @@ import AllUser from "./admin/AllUser";
 import AllPizza from "./admin/AllPizza";
 import AddPizza from "./admin/AddPizza";
 import AllOrders from "./admin/AllOrders";
+import OrderScreen from "./components/OrderScreen";
+import UpdatePizza from "./components/UpdatePizza";
 
 
 function App() {
@@ -32,11 +34,13 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<CartScreen />} />
+        <Route path="/orders" element={<OrderScreen />} />
         <Route path="/admin" element={<Admin/>}>
             <Route path="/admin" element={<AllUser />} />
             <Route path="/admin/allpizza" element={<AllPizza />} />
             <Route path="/admin/addpizza" element={<AddPizza />} />
             <Route path="/admin/allorders" element={<AllOrders />} />
+            <Route path="/admin/updatepizza/:id" element={<UpdatePizza />} />
         </Route>
         
       </Routes>

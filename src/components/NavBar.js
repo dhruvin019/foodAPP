@@ -33,7 +33,7 @@ function NavBar() {
               {currentUser ? (
                 <LinkContainer to="/">
                   <NavDropdown title={currentUser.name} id="basic-nav-dropdown">
-                    <LinkContainer to="/orders">
+                  <LinkContainer to="/orders">
                       <NavDropdown.Item>orders</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item

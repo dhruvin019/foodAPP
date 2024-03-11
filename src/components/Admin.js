@@ -8,16 +8,16 @@ import { LinkContainer } from 'react-router-bootstrap';
 const Admin = () => {
   const userState = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userState;
-  useEffect(() => {
-    if (localStorage.getItem("currentUser") === null || !currentUser.isAdmin) {
-      window.location.href = "/";
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("currentUser") === null || !currentUser.isAdmin) {
+  //     window.location.href = "/";
+  //   }
+  // }, [currentUser]);
   return (
     <Container>
       <Row>
         <h1 className="text-center bg-dark text-light p-2">Admin Panel</h1>
-        <Col md={2}>
+        <Col md={4}>
           <ButtonGroup vertical style={{ minHeight: '400px' }}>
             <LinkContainer to="/admin">
               <Button>All Users</Button>
@@ -34,7 +34,7 @@ const Admin = () => {
           </ButtonGroup>
         </Col>
 
-        <Col md={10}>
+        <Col md={8}>
           <Outlet/>
         </Col>
       </Row>
