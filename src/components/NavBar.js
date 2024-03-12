@@ -8,13 +8,12 @@ import logo from "../images/logo.png";
 function NavBar() {
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.cartReducer);
-  // const userState = useSelector((state) => state.loginUserReducer);
-  // const { currentUser } = userState;
-  // console.log(currentUser);
-  const currentUser = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser"))
-  : null;
-  console.log(currentUser);
+  const userState = useSelector((state) => state.loginUserReducer);
+  const { currentUser } = userState;
+
+  // const currentUser = localStorage.getItem("currentUser")
+  // ? JSON.parse(localStorage.getItem("currentUser"))
+
 
 
     return (

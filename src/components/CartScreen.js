@@ -8,6 +8,7 @@ import Checkout from "./Checkout";
 
 const CartScreen = () => {
     const cartState = useSelector((state) => state.cartReducer);
+
     const cartItems = cartState.cartItems;
 
     // const cartItems = localStorage.getItem("cartItems")
@@ -47,6 +48,7 @@ const CartScreen = () => {
                       />{" "}
                       &nbsp;
                       {item.quantity} &nbsp;
+                      
                       <FaPlusCircle
                         className="text-success"
                         style={{ cursor: "pointer" }}

@@ -31,9 +31,13 @@ const initialState = {
   }
 };
 
+
+
 const store = configureStore({
+  // initialState,
+  preloadedState: initialState,
   reducer: rootReducer,
-  initialState,
 });
 
 export default store;
+
