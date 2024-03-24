@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
@@ -17,14 +18,61 @@ const CartScreen = () => {
 
     const dispatch = useDispatch();
     const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
+
+
+    const checkoutHandler = async (subTotal) => {
+
+      try{
+
+        const {data:{order}} =await axios.post("/api/payment/checkout",{subTotal});
+
+        const {data:{key}} =await axios.get("/api/payment/getkey");
+
+        const options = {
+          key, // Enter the Key ID generated from the Dashboard
+          amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+          currency: "INR",
+          name: "Mr_Virpara",
+          description: "Test Transaction",
+          // image: "https://example.com/your_logo",
+          order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the previous step
+
+          handler: function (response){
+              alert(response.razorpay_payment_id);
+              alert(response.razorpay_order_id);
+              alert(response.razorpay_signature)
+          },
+          prefill: {
+              "name": "Gaurav Kumar",
+              "email": "gaurav.kumar@example.com",
+              "contact": "9999999999"
+          },
+          notes: {
+              "address": "Razorpay Corporate Office"
+          },
+          theme: {
+              "color": "#3399cc"
+          }
+      };
+
+      const  razor = new window.Razorpay(options);
+      razor.open();
+      }
+      catch(err){
+        console.log(err);
+      }
+
+    }
+
+
     return (
 <Container>
         <Row>
           <Col md={6}>
             <h1>My Cart</h1>
             <Row>
-              {cartItems.map((item) => (
-                <>
+              {cartItems.map((item,index) => (
+                <React.Fragment key={index}>
                   <Col md={7}>
                     <h5>
                       {item.name} [{item.varient}]
@@ -75,7 +123,7 @@ const CartScreen = () => {
                     />
                   </Col>
                   <hr />
-                </>
+                  </React.Fragment>
               ))}
             </Row>
           </Col>
@@ -84,7 +132,8 @@ const CartScreen = () => {
             <h4>Sub Total </h4>
             <h4>RS : {subTotal} /-</h4>
             
-            <Checkout subTotal={subTotal}/>
+            {/* <Checkout subTotal={subTotal}/> */}
+            <Button  onClick ={()=> checkoutHandler(subTotal)} >Pay Now</Button>
           </Col>
         </Row>
       </Container>

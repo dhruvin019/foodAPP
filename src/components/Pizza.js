@@ -134,8 +134,11 @@ const Pizza = ({ pizza }) => {
               </Col>
             </Row>
           </Card.Text>
+          
           <Row>
             <Col md={6}>Price : {pizza.price[0][varient] * quantity} /-RS</Col>
+            {/* <h1>{pizza.price[0][varient] }</h1> */}
+            {/* <h4>{pizza.price}</h4> */}
             <Col md={6}>
               <Button
                 onClick={addToCartHandler}
