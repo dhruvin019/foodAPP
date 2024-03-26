@@ -17,21 +17,40 @@ const AddPizza = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const pizza = {
-      name,
-      varients: ["small", "medium", "large"],
-      price: [
-        {
-          small: parseInt(smallPrice),
-          medium: parseInt(mediumPrice),
-          large: parseInt(largePrice),
-        }
-      ],
-      category,
-      image,
-      description,
-    };
-    dispatch(addPizza(pizza));
+    // const pizza = {
+    //   name,
+    //   varients: ["small", "medium", "large"],
+    //   price: [
+    //     {
+    //       small: parseInt(smallPrice),
+    //       medium: parseInt(mediumPrice),
+    //       large: parseInt(largePrice),
+    //     }
+    //   ],
+    //   category,
+    //   image,
+    //   description,
+    // };
+    // dispatch(addPizza(pizza));
+
+    const formData = new FormData();
+    formData.append("name", name);
+    // formData.append("varients", JSON.stringify(["small", "medium", "large"]));
+    // formData.append("price", JSON.stringify({ small: parseInt(smallPrice), medium: parseInt(mediumPrice), large: parseInt(largePrice) }));
+    formData.append("varients", JSON.stringify(["small", "medium", "large"]));
+    formData.append("price", JSON.stringify([
+      { variant: "small", price: parseInt(smallPrice) },
+      { variant: "medium", price: parseInt(mediumPrice) },
+      { variant: "large", price: parseInt(largePrice) }
+    ]));
+    formData.append("category", category);
+    formData.append("image", image); // Append the image file
+    formData.append("description", description);
+
+    dispatch(addPizza(formData));
+
+   
+
     alert('Pizza added');
     setName("");
     setSmallPrice("");
@@ -89,10 +108,9 @@ const AddPizza = () => {
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Image</Form.Label>
             <Form.Control
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              placeholder="Add Image URL"
+              type="file" 
+            
+              onChange={(e) => setImage(e.target.files[0])} 
             />
           </Form.Group>
         </Row>

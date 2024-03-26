@@ -18,6 +18,8 @@ import AddPizza from "./admin/AddPizza";
 import AllOrders from "./admin/AllOrders";
 import OrderScreen from "./components/OrderScreen";
 import UpdatePizza from "./components/UpdatePizza";
+import PaymentSuccess from "./components/paymentsuccess";
+
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/orders" element={<OrderScreen />} />
+        <Route path="/paymentsuccess" element={<PaymentSuccess/>} />
+
+
         <Route path="/admin" element={<Admin/>}>
             <Route path="/admin" element={<AllUser />} />
             <Route path="/admin/allpizza" element={<AllPizza />} />
@@ -44,6 +49,7 @@ function App() {
         </Route>
         
       </Routes>
+      
     </BrowserRouter>
   );
 }

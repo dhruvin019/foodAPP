@@ -3,6 +3,7 @@ import { getAllPizzaReducer } from "./reducers/pizzaReducer";
 import { registerUserReducer, loginUserReducer, getAllUsersReducer } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
 import { getUserOrdersReducer, placeOrderReducer } from "./reducers/orderReducer";
+import { checkoutReducer } from "./reducers/paymentReducer";
 
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -19,7 +20,8 @@ const rootReducer = {
   loginUserReducer: loginUserReducer,
   placeOrderReducer: placeOrderReducer,
   getUserOrdersReducer: getUserOrdersReducer,
-  getAllUsersReducer: getAllUsersReducer
+  getAllUsersReducer: getAllUsersReducer,
+  paymentReducer:checkoutReducer,
 };
 
 const initialState = {
